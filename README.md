@@ -69,7 +69,16 @@ ai-workflow-agent/
 
 🖼️ Screenshots
 
-(Add after running the frontend — History Dashboard, Metrics Charts, Workflow Execution)
+<img width="1361" height="691" alt="workflow1" src="https://github.com/user-attachments/assets/01b82ea1-f59b-410a-8b52-f9bc1da832d1" />
+<img width="1363" height="687" alt="workflow2" src="https://github.com/user-attachments/assets/c923d044-33ad-4ecd-afda-2e2a5eec0f32" />
+<img width="1364" height="686" alt="workflow3" src="https://github.com/user-attachments/assets/1b3cd1d3-e0f3-45b8-9648-757845d8581f" />
+<img width="1365" height="688" alt="workflow4" src="https://github.com/user-attachments/assets/524fafad-799f-4973-83d9-a7507d4a6231" />
+<img width="1364" height="689" alt="workflow5" src="https://github.com/user-attachments/assets/33b55e5c-d251-4f24-9b8c-bfd8eaafbe9d" />
+
+
+
+
+
 
 🎨 Why This Project Matters
 
