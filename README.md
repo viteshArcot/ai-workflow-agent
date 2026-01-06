@@ -1,109 +1,175 @@
-AI Workflow Agent  🚀
+AI Workflow Agent
+A learning project where I explored constrained workflow orchestration with AI components. Built this to understand agentic AI concepts without the hype.
 
-A production-ready AI workflow orchestration system that combines LLM-powered task generation, ML-based prioritization, and full-stack dashboards for insights.
+What I Was Trying to Learn
+This isn't a production AI platform. It's my attempt to understand:
 
-✨ Overview
+How to build predictable workflows that include AI decision-making
+When to use ML vs LLM vs deterministic logic for different steps
+How to constrain AI autonomy while preserving useful creativity
+Practical trade-offs in workflow orchestration design
+Basically, I wanted to understand the fundamentals before jumping into complex agent frameworks.
 
-The AI Workflow Agent  is a complete end-to-end orchestration platform. It intelligently processes natural language tasks, prioritizes them with machine learning, generates context-aware subtasks using an LLM, and stores results with full history and metrics tracking.
+What I Intentionally Avoided
+Full AI autonomy (the system can't modify its own workflow)
+Complex multi-agent interactions
+Enterprise-scale features like distributed processing
+Marketing buzzwords about "AI-powered platforms"
+I kept it simple on purpose. Complexity can always be added later.
 
-Built with a FastAPI backend and a React + Tailwind frontend, it delivers enterprise-grade features in a clean, modern UI with dashboards for monitoring system performance.
+How the Agent Actually Works
+This system exhibits what I call constrained agency - it makes contextual decisions and maintains state across multiple steps, but within explicit boundaries:
 
-🎯 Key Features
+Where it has autonomy:
 
-Custom DAG Execution → Runs multi-node workflows with topological ordering.
+Task content generation (creative, contextual reasoning)
+Priority classification (within trained model bounds)
+Summary formatting (style and emphasis choices)
+Where it doesn't:
 
-ML-Powered Prioritization → DecisionTreeClassifier trained on labeled examples to classify tasks as urgent/normal.
+Workflow structure (always follows the same 4-step path)
+Tool selection (each node has a fixed function)
+Database operations (deterministic persistence only)
+Meta-reasoning (can't modify its own behavior)
+Why these boundaries exist:
 
-LLM Integration → OpenRouter (Mistral-7B) for task generation and summarization.
+Debuggability: When something goes wrong, I know exactly which node failed
+Predictability: Same input type always follows the same execution path
+Cost control: Agent can't decide to make extra API calls or use expensive models
+Failure isolation: Errors in one node don't cascade unpredictably
+Why I Chose a Workflow Agent
+I considered several approaches and settled on a DAG-based workflow because:
 
-Knowledge Base Ingestion → Supports CSV/JSON ingestion for contextual task enrichment.
+vs Single LLM Call:
 
-Execution History → Queryable API with advanced filtering (priority, limits).
+More debuggable (can trace failures to specific nodes)
+Better separation of concerns (classification vs generation vs formatting)
+Independent optimization (can improve each step separately)
+Predictable resource usage
+vs Full Agent Autonomy:
 
-Metrics Dashboard → Track per-node latency and accuracy trends.
+Easier to understand and debug
+Consistent performance characteristics
+Bounded failure modes
+Better for learning the fundamentals
+vs Rule-Based System:
 
-Modern Frontend → React + Tailwind + Recharts with smooth animations and responsive design.
+Handles contextual nuance (LLM creativity where needed)
+Adapts to different domains and request types
+Learns from examples (ML classification)
+More flexible than rigid if/then logic
+Architecture
+Query → [ML Classifier] → [LLM Generator] → [LLM Summarizer] → [Database Logger]
+4 nodes, always executed in this order:
 
-🛠️ Tech Stack
+Priority Classifier - DecisionTreeClassifier (not LLM) for consistent results
+Task Generator - LLM with knowledge context for creative task breakdown
+Summarizer - LLM for clean output formatting
+Logger - Deterministic database storage (no AI involvement)
+I chose this specific structure after trying several alternatives. The linear flow makes debugging much easier.
 
-Backend: FastAPI, scikit-learn, pandas, SQLite, OpenRouter API
-Frontend: React, TailwindCSS, Framer Motion, Recharts, Axios
-Architecture: Custom DAG orchestration, modular service design, REST APIs
+Where This Agent Breaks (The Honest Part)
+Agent systems fail in subtle ways that are different from traditional software. Here's what I've observed:
 
-📊 System Architecture
+Classification Errors:
 
-Task Prioritizer → ML classifier assigns urgency.
+"Schedule urgent meeting with CEO" might get classified as "normal"
+Model trained on tech queries struggles with other domains
+Small training dataset limits generalization
+Task Generation Failures:
 
-Task Generator → LLM expands input into subtasks.
+Over-generation: "Fix login bug" → 15 micro-tasks
+Under-generation: "Redesign UI" → vague, non-actionable tasks
+Context hallucination: Inventing details not in the original query
+Cascading Failures:
 
-Summarizer → LLM produces executive summaries.
+Wrong priority classification affects task generation quality
+Bad task generation creates unsummarizable content
+Single bad input can affect entire execution pipeline
+What I Don't Handle Well:
 
-Logger → SQLite database stores full history + metrics.
+Semantic correctness (tasks might be syntactically valid but nonsensical)
+Domain expertise (system doesn't know its knowledge boundaries)
+Temporal context (time-sensitive aspects of requests)
+User intent mismatch (understanding query but missing real goal)
+These limitations are why I keep the system constrained and don't claim it can handle everything.
 
-🚀 How It Works
+Tech Stack
+Backend: FastAPI, scikit-learn, OpenRouter API, SQLite
+Frontend: React, TailwindCSS, Vite
+Testing: Pytest with async support
 
-User submits a natural language query.
+Chose these for simplicity and "just works" factor, not because they're the most sophisticated options.
 
-System routes it through ML + LLM pipeline.
+Documentation
+Agentic Design - What "agentic" means in this system
+Workflow Decisions - Why each node exists and alternatives considered
+Failure Modes - How and why the agent fails
+Evaluation Strategy - How success is measured without ground truth
+Interview Prep Notes - What I learned building this
+Agent Architecture - System structure and constraints
+Design Decisions - Technical choices and trade-offs
+Limitations - What this doesn't handle
+Running the System
+Backend:
 
-Workflow executes across nodes with tracked latency + accuracy.
+cd /workspaces/ai-workflow-agent
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+Frontend:
 
-Results are displayed in a dashboard (real-time updates).
-
-📁 Project Structure
-ai-workflow-agent/
-├── app/                  # FastAPI backend
-│   ├── main.py           # Entry point
-│   ├── graph.py          # DAG runner
-│   ├── prioritizer.py    # ML classifier
-│   ├── generator.py      # LLM task generator
-│   ├── summarizer.py     # LLM summarizer
-│   ├── logger.py         # Database logger
-│   ├── ingestion.py      # Knowledge ingestion
-│   └── llm_client.py     # OpenRouter client
-├── frontend/             # React frontend
-│   ├── src/components/   # Reusable components
-│   ├── src/pages/        # Dashboard, History, Metrics
-│   └── App.jsx           # Main entry
-└── data/                 # Training datasets
-
-🖼️ Screenshots
-
-<img width="1361" height="691" alt="workflow1" src="https://github.com/user-attachments/assets/01b82ea1-f59b-410a-8b52-f9bc1da832d1" />
-<img width="1363" height="687" alt="workflow2" src="https://github.com/user-attachments/assets/c923d044-33ad-4ecd-afda-2e2a5eec0f32" />
-<img width="1364" height="686" alt="workflow3" src="https://github.com/user-attachments/assets/1b3cd1d3-e0f3-45b8-9648-757845d8581f" />
-<img width="1365" height="688" alt="workflow4" src="https://github.com/user-attachments/assets/524fafad-799f-4973-83d9-a7507d4a6231" />
-<img width="1364" height="689" alt="workflow5" src="https://github.com/user-attachments/assets/33b55e5c-d251-4f24-9b8c-bfd8eaafbe9d" />
-
-
-
-
-
-
-🎨 Why This Project Matters
-
-This project demonstrates applied AI engineering across multiple layers:
-
-Backend intelligence (ML + LLM integration).
-
-Workflow orchestration (custom DAG execution).
-
-Full-stack delivery (React dashboards with animations).
-
-Production quality (error handling, async, modular design).
-
-It mirrors the real-world systems used in enterprise AI orchestration platforms.
-
-🧑‍💻 Setup Instructions
-Backend
-cd app
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-
-Frontend
-cd frontend
-npm install
+cd /workspaces/ai-workflow-agent/frontend
 npm run dev
+Access at http://localhost:3000
+
+Sample Queries That Work
+Urgent (ML classifier usually gets these right):
+
+"Critical server crash needs immediate fix"
+"Database connection failing for all users"
+Normal:
+
+"Update user documentation for new features"
+"Schedule team meeting for next week"
+The system works best with clear, actionable requests. Vague or highly domain-specific queries often produce mediocre results.
+
+What I'd Improve If I Had More Time
+Evaluation Framework:
+
+More systematic quality measurement approaches
+Automated consistency testing across similar inputs
+Better error pattern detection and analysis
+Error Recovery:
+
+Retry logic for transient failures
+Self-correction mechanisms when outputs seem obviously wrong
+More sophisticated fallback strategies
+Performance:
+
+Async processing for better scalability
+Caching for repeated similar queries
+Database optimization for larger datasets
+Agent Capabilities:
+
+Confidence scoring for uncertain decisions
+Domain-specific knowledge integration
+Better handling of temporal and contextual nuance
+What I Actually Learned
+Workflow orchestration is harder than AI components: Most bugs were in state management and error handling, not LLM calls
+Constraints enable reliability: Limiting agent autonomy made it more useful and debuggable
+Agent evaluation is fundamentally different: No ground truth labels, need qualitative assessment
+Failure modes amplify in multi-step systems: Small errors cascade through the pipeline
+Simple approaches often work better: Complex agent architectures become very hard to debug
+The biggest insight: agent systems are more about engineering discipline than AI sophistication. The hard parts aren't the ML models - they're the orchestration, error handling, and evaluation.
+
+This project taught me to think about AI systems as components in larger workflows, with explicit boundaries between creative AI and deterministic system operations.
 
 
-Access app at: http://localhost:3000
+<img width="1361" height="691" alt="wf1" src="https://github.com/user-attachments/assets/7d1c1a60-387f-43cd-8c42-c331a470b744" />
+<img width="1363" height="687" alt="wf2" src="https://github.com/user-attachments/assets/9e5037f7-f90f-4063-8b1f-9b2ad88ce563" />
+<img width="1364" height="686" alt="wf3" src="https://github.com/user-attachments/assets/8d574b02-67e7-42ad-a495-b10ec72b8c37" />
+<img width="1365" height="688" alt="wf4" src="https://github.com/user-attachments/assets/15353762-2b7e-4f73-b256-08c5c3a3fa7f" />
+<img width="1364" height="689" alt="wf5" src="https://github.com/user-attachments/assets/57ea7091-a2e9-4357-88d5-a881a9dfe24d" />
+
+
+
+
