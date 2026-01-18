@@ -1,0 +1,13 @@
+INFO:     Will watch for changes in these directories: ['/workspaces/ai-workflow-agent']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27949] using StatReload
+INFO:     Started server process [27951]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+✅ Loaded existing prioritizer model
+INFO:     49.37.146.80:0 - "GET / HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27951]
+INFO:     Stopping reloader process [27949]

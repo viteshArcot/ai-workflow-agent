@@ -1,0 +1,51 @@
+query,priority
+"Server is down and users can't access the system",urgent
+"Critical security breach detected in production",urgent
+"Database crashed and all services are offline",urgent
+"Payment system is not processing transactions",urgent
+"Website is completely inaccessible to customers",urgent
+"Production deployment failed and rollback needed",urgent
+"Memory leak causing server crashes every hour",urgent
+"API returning 500 errors for all requests",urgent
+"Data corruption detected in main database",urgent
+"Emergency maintenance required on core systems",urgent
+"High CPU usage causing system slowdown",urgent
+"SSL certificate expired blocking all HTTPS traffic",urgent
+"Backup system failed during critical operation",urgent
+"Load balancer is down affecting all traffic",urgent
+"Authentication service is rejecting all logins",urgent
+"Update user documentation for new features",normal
+"Refactor legacy code for better maintainability",normal
+"Add unit tests for the payment module",normal
+"Schedule team meeting for next sprint planning",normal
+"Review and merge pending pull requests",normal
+"Optimize database queries for better performance",normal
+"Research new technologies for future projects",normal
+"Create design mockups for upcoming feature",normal
+"Update project dependencies to latest versions",normal
+"Write technical blog post about recent project",normal
+"Organize code review session with team",normal
+"Plan architecture for new microservice",normal
+"Update CI/CD pipeline configuration",normal
+"Create user training materials",normal
+"Conduct performance testing on staging",normal
+"Set up monitoring dashboards",normal
+"Implement new logging framework",normal
+"Design API endpoints for mobile app",normal
+"Create database migration scripts",normal
+"Update project README documentation",normal
+"Configure development environment setup",normal
+"Implement feature flags for gradual rollout",normal
+"Create automated testing suite",normal
+"Design user interface for admin panel",normal
+"Implement caching layer for better performance",normal
+"Set up error tracking and alerting",normal
+"Create deployment automation scripts",normal
+"Implement data validation rules",normal
+"Design database schema for new feature",normal
+"Create API documentation with examples",normal
+"Implement user authentication system",normal
+"Set up continuous integration pipeline",normal
+"Create backup and recovery procedures",normal
+"Implement rate limiting for API endpoints",normal
+"Design responsive layout for mobile devices",normal

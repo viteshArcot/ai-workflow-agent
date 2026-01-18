@@ -1,0 +1,15 @@
+
+> workflow-agent-frontend@1.0.0 dev
+> vite
+
+Port 3000 is in use, trying another one...
+Port 3001 is in use, trying another one...
+Port 3002 is in use, trying another one...
+Port 3003 is in use, trying another one...
+
+  VITE v4.5.14  ready in 473 ms
+
+  ➜  Local:   http://localhost:3004/
+  ➜  Network: use --host to expose
+11:45:39 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+11:47:12 AM [vite] hmr update /src/pages/History.jsx, /src/index.css, /src/pages/Dashboard.jsx, /src/pages/Me11:47:12 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css, /src/pages/History.jsx, /src/pages/Metrics.jsx
