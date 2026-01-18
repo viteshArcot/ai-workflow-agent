@@ -187,3 +187,19 @@ The system works best with clear, actionable requests. Vague or highly domain-sp
 The biggest insight: agent systems are more about engineering discipline than AI sophistication. The hard parts aren't the ML models - they're the orchestration, error handling, and evaluation.
 
 This project taught me to think about AI systems as components in larger workflows, with explicit boundaries between creative AI and deterministic system operations.
+
+
+
+<img width="1361" height="691" alt="wf1" src="https://github.com/user-attachments/assets/263b2e9f-c877-49ee-8233-0420ca976060" />
+
+<img width="1363" height="687" alt="wf2" src="https://github.com/user-attachments/assets/32844c57-ecd8-4ac2-b5e7-3239bbddd93b" />
+
+<img width="1364" height="686" alt="wf3" src="https://github.com/user-attachments/assets/1fc3d718-0cf8-40c7-9b66-4ae92e231b80" />
+
+<img width="1365" height="688" alt="wf4" src="https://github.com/user-attachments/assets/4396c6ff-03a1-4f75-807c-db0739a71dbb" />
+
+<img width="1364" height="689" alt="wf5" src="https://github.com/user-attachments/assets/9d495590-807d-4dfb-9b2c-91f15e3e060c" />
+
+
+
+
